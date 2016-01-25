@@ -26,6 +26,7 @@ Labs::Application.routes.draw do
     resources :comments
     collection do
       get :list
+      get :live
     end
   end
 

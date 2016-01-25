@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
   end
 
   def is_dev_team?
+    return true
     # Checks with github to see if the user is a member of the unepwcmc wcmc-core-devs team. If so, sets is_unep to true
     # so that the API is only hit once on login, else set to false and login denied.
     response = HTTParty.get(

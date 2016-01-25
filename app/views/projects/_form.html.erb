@@ -47,6 +47,20 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :budget, class: "col-sm-2 control-label" %>
+        <div class="input col-sm-10">
+          <%= f.text_area :budget, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :money_spent, class: "col-sm-2 control-label" %>
+        <div class="input col-sm-10">
+          <%= f.text_area :money_spent, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
         <%= f.label :screenshot, class: "col-sm-2 control-label" %>
         <div class="input col-sm-10">
           <%= f.file_field :screenshot %>

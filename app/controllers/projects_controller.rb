@@ -131,6 +131,7 @@ class ProjectsController < ApplicationController
       :dropbox_folders_array, :pivotal_tracker_ids_array, :trello_ids_array, :expected_release_date,
       :rails_version, :ruby_version, :postgresql_version, :other_technologies_array, :published,
       :internal_description, :background_jobs, :cron_jobs, :user_access, :budge, :money_spent,
+      :design_days, :backend_days, :frontend_days, :mgmt_days, :data_days, :research_days,
       master_sub_relationship_attributes: [:id, :master_project_id, :_destroy],
       sub_master_relationship_attributes: [:id, :sub_project_id, :_destroy]
     )

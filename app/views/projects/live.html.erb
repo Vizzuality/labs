@@ -12,23 +12,44 @@
 
 <% date_months.each do |date| %>
   <div>
-    <h2><%= date.strftime "%b/%Y" %></h2>
-    <% @projects.each do |project| %>
-      <% if project.expected_release_date <= max_release_date %>
-        <% months_to_deadline = (project.expected_release_date.month - Date.today.month).to_i %>
-        <div style="border-bottom: 1px dashed black; padding-top: 5px;">
-          <p><strong>Title:</strong> <%= project.title %></p>
-          <p><strong>Deadline:</strong> <%= project.expected_release_date %>
-            <%= if project.expected_release_date.month == date.month then "FINISHES THIS MONTH!" end %>
-          </p>
-          <p><strong>Budget:</strong> <%= number_to_currency(project.budget) %></p>
-          <p><strong>Money Spent:</strong> <%= number_to_currency(project.money_spent) %></p>
-          <p>
-            <strong>Money to spend:</strong>
-            <%= number_to_currency((project.budget-project.money_spent) / (months_to_deadline > 0 ? months_to_deadline : 1)) %>
-          </p>
-        </div>
-      <% end %>
-    <% end %>
+    <h2><%= date.strftime "%B %Y" %></h2>
+    <table class="display table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Deadline</th>
+          <th>Budget</th>
+          <th>Money</th>
+          <th>Design</th>
+          <th>Front</th>
+          <th>Back</th>
+          <th>Data</th>
+          <th>Research</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+          <% if project.expected_release_date <= max_release_date %>
+            <% months_to_deadline = [(project.expected_release_date.month - Date.today.month).to_i,1].max %>
+            <tr>
+              <td><%= project.title %></td>
+              <td>
+                <%= project.expected_release_date %>
+                <%= if project.expected_release_date.month == date.month then "FINISHES THIS MONTH!" end %>
+              </td>
+              <td><%= number_to_currency(project.budget) %> (<%= number_to_currency(project.money_spent) %>)</td>
+              <td>
+                <%= number_to_currency((project.budget-project.money_spent) / months_to_deadline) %>
+              </td>
+              <td><%= project.design_days.present? ? (project.design_days/months_to_deadline) : "n/a" %></td>
+              <td><%= project.frontend_days.present? ? (project.frontend_days/months_to_deadline) : "n/a" %></td>
+              <td><%= project.backend_days.present? ? (project.backend_days/months_to_deadline) : "n/a" %></td>
+              <td><%= project.data_days.present? ? (project.data_days/months_to_deadline) : "n/a" %></td>
+              <td><%= project.research_days.present? ? (project.research_days/months_to_deadline) : "n/a" %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 <% end %>

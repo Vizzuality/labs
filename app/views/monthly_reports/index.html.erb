@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h1><%= @project.title %>'s monthly reports</h1>
+</div>
+
+
+<table class="display table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Money spent</th>
+      <th>Design</th>
+      <th>Frontend</th>
+      <th>Backend</th>
+      <th>Data</th>
+      <th>Research</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @monthly_reports.each do |mr| %>
+      <tr>
+        <td><%= mr.report_date.strftime("%B %Y") %></td>
+        <td><%= mr.money_spent %></td>
+        <td><%= mr.design_days %></td>
+        <td><%= mr.frontend_days %></td>
+        <td><%= mr.backend_days %></td>
+        <td><%= mr.data_days %></td>
+        <td><%= mr.research_days %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

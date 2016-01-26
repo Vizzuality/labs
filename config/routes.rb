@@ -24,11 +24,14 @@ Labs::Application.routes.draw do
 
   resources :projects do
     resources :comments
+    resources :monthly_reports, only: [:new, :index]
     collection do
       get :list
       get :live
     end
   end
+
+  resources :monthly_reports, only: [:create]
 
   resources :installations do
     resources :comments

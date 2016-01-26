@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  money_spent: 1.5
+  design_days: 1
+  frontend_days: 1
+  backend_days: 1
+  data_days: 1
+  research_days: 1
+  report_date: 2016-01-26
+
+two:
+  money_spent: 1.5
+  design_days: 1
+  frontend_days: 1
+  backend_days: 1
+  data_days: 1
+  research_days: 1
+  report_date: 2016-01-26

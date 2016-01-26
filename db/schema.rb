@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125170829) do
+ActiveRecord::Schema.define(version: 20160126113901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,21 @@ ActiveRecord::Schema.define(version: 20160125170829) do
   add_index "installations", ["deleted_at"], name: "index_installations_on_deleted_at", using: :btree
   add_index "installations", ["project_instance_id"], name: "index_installations_on_project_instance_id", using: :btree
   add_index "installations", ["server_id"], name: "index_installations_on_server_id", using: :btree
+
+  create_table "monthly_reports", force: :cascade do |t|
+    t.float    "money_spent"
+    t.integer  "design_days"
+    t.integer  "frontend_days"
+    t.integer  "backend_days"
+    t.integer  "data_days"
+    t.integer  "research_days"
+    t.date     "report_date"
+    t.integer  "project_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "monthly_reports", ["project_id"], name: "index_monthly_reports_on_project_id", using: :btree
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"

@@ -52,6 +52,8 @@ class Project < ActiveRecord::Base
   has_many :project_instances
   has_many :reviews, dependent: :destroy
 
+  has_many :monthly_reports, dependent: :destroy
+
   # Custom search scope for publically viewable projects
   pg_search_scope :search, :using => { :tsearch => {:prefix => true} },
     :against => [:title, :description, :github_identifier, :state, :internal_clients,

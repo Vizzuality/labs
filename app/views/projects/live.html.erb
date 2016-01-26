@@ -25,6 +25,7 @@
           <th>Back</th>
           <th>Data</th>
           <th>Research</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -32,7 +33,7 @@
           <% if project.expected_release_date <= max_release_date %>
             <% months_to_deadline = [(project.expected_release_date.month - Date.today.month).to_i,1].max %>
             <tr>
-              <td><%= project.title %></td>
+              <td><%= link_to project.title, edit_project_path(project) %></td>
               <td>
                 <%= project.expected_release_date %>
                 <%= if project.expected_release_date.month == date.month then "FINISHES THIS MONTH!" end %>
@@ -46,6 +47,7 @@
               <td><%= project.backend_days.present? ? (project.backend_days/months_to_deadline) : "n/a" %></td>
               <td><%= project.data_days.present? ? (project.data_days/months_to_deadline) : "n/a" %></td>
               <td><%= project.research_days.present? ? (project.research_days/months_to_deadline) : "n/a" %></td>
+              <td><%= link_to "Add report", new_project_monthly_report_path(project) %></td>
             </tr>
           <% end %>
         <% end %>

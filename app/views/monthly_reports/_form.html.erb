@@ -1,0 +1,69 @@
+<%= form_for(@monthly_report, :html => {class: "form-horizontal"}) do |f| %>
+  <% if @monthly_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@monthly_report.errors.count, "error") %> prohibited this monthly_report from being saved:</h2>
+
+      <ul>
+      <% @monthly_report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :project_id %>
+
+  <div class="form-group">
+    <%= f.label :report_date, class: "col-sm-2 control-label" %>
+    <div class="input col-sm-10">
+      <%= f.text_field :report_date, class: "form-control", data: { provide: 'datepicker'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :money_spent, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :money_spent, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :design_days, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :design_days, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :frontend_days, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :frontend_days, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :backend_days, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :backend_days, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :data_days, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :data_days, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :research_days, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :research_days, class: "form-control" %>
+    </div>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+   </div>
+<% end %>
